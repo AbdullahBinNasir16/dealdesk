@@ -7,7 +7,7 @@ DealDesk answers buyers 24/7. It qualifies them (budget, area or model, timeline
 | | |
 |---|---|
 | 🌐 **Live website** | https://YOUR-PROJECT.vercel.app |
-| 🤖 **Agent API** | https://YOUR-SPACE.hf.space (`POST /chat`, `GET /health`) |
+| 🤖 **Agent API** | https://dealdesk-api-hyz7.onrender.com (`POST /chat`, `GET /health`) |
 | 🎬 **Demo video** | https://youtu.be/YOUR-VIDEO |
 | 🧑‍💼 **Dealer login** | `prime / prime123` (cars) · `skyline / skyline123` (property) |
 

@@ -1,5 +1,5 @@
-// Agent API base URL. Set this to your Hugging Face Space / Render URL before deploying to Vercel.
-// Example: "https://your-team-dealdesk.hf.space"
+// Agent API base URL (Render). Local pages use the local backend.
+// Live API: https://dealdesk-api-hyz7.onrender.com
 window.DEALDESK_API = (location.hostname === "localhost" || location.hostname === "127.0.0.1" || location.protocol === "file:")
   ? "http://localhost:8000"
-  : "https://YOUR-SPACE-NAME.hf.space";
+  : "https://dealdesk-api-hyz7.onrender.com";
