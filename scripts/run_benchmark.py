@@ -164,7 +164,8 @@ def main():
     ap.add_argument("--runs", type=int, default=1)
     ap.add_argument("--only", default="", help="comma-separated test ids")
     ap.add_argument("--category", default="", help="only tests whose category starts with this")
-    ap.add_argument("--tests", default=str(Path(__file__).resolve().parent.parent / "tests.json"))
+    ap.add_argument("--tests", default=str(Path(__file__).resolve().parent.parent / "tests.json"),
+                    help="tests.json (10 core cases, default) or tests_full.json (51 scenarios)")
     ap.add_argument("--out", default="benchmark_results.json")
     args = ap.parse_args()
     # "localhost" on Windows tries IPv6 first and adds ~2 s per request; use the IPv4 loopback.
@@ -196,6 +197,13 @@ def main():
                 payload = {k: fill(step[k], vars_) for k in ("user_id", "thread_id", "message")}
                 try:
                     resp, lat = post(args.base, payload)
+                except urllib.error.HTTPError as e:
+                    if e.code == 403 and step.get("allow_http_block"):
+                        # blocked by the host's edge firewall before reaching the app: counts as refused
+                        last, last_lat = {}, 0.0
+                        break
+                    fails.append(f"step {i + 1}: HTTP error: {e}")
+                    break
                 except (urllib.error.URLError, TimeoutError, ValueError) as e:
                     fails.append(f"step {i + 1}: HTTP error: {e}")
                     break

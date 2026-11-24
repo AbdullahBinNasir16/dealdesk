@@ -13,7 +13,7 @@ from .db import engine, followups, leads, listings, now, profiles, visits
 # Fields we keep across conversations. Anything else (CNIC, card numbers, small talk,
 # instructions found in messages) is never stored.
 PROFILE_FIELDS = {"name", "phone", "category", "budget_max_pkr", "city", "area", "property_type",
-                  "car_make", "car_model", "timeline", "preferences", "objections", "interested_listings"}
+                  "car_make", "car_model", "transmission", "timeline", "preferences", "objections", "interested_listings"}
 LIST_FIELDS = {"preferences", "objections", "interested_listings"}
 MAX_LIST = 6
 
@@ -69,7 +69,7 @@ def profile_for_prompt(user_id: str) -> str:
     p = get_profile(user_id)
     parts = []
     labels = [("name", "Name"), ("phone", "Phone"), ("category", "Looking for"), ("property_type", "Property type"),
-              ("car_make", "Car make"), ("car_model", "Car model"), ("city", "City"), ("area", "Preferred area"),
+              ("car_make", "Car make"), ("car_model", "Car model"), ("transmission", "Transmission (pass it to search)"), ("city", "City"), ("area", "Preferred area"),
               ("timeline", "Timeline")]
     for key, label in labels:
         if p.get(key):

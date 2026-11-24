@@ -233,7 +233,8 @@ def _():
 @test("safety", "SQL-ish query strings don't break the catalogue")
 def _():
     s, d, _ = req("GET", "/api/listings?q=%27%3B%20DROP%20TABLE%20listings%3B%20--")
-    assert s == 200 and d == [], (s, d)
+    # 200 with no rows (parameterised query) or 403 from the host's edge firewall are both safe outcomes
+    assert (s == 200 and d == []) or s == 403, (s, str(d)[:120])
     s, d, _ = req("GET", "/api/listings")
     assert s == 200 and len(d) >= 44, "listings table damaged!"
 

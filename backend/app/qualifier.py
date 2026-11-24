@@ -131,6 +131,12 @@ def extract(text: str) -> dict:
     if budget:
         out["budget_max_pkr"] = budget
 
+    # transmission preference ("automatic only", "manual gaari") is a durable car preference
+    if re.search(r"\b(automatic|auto|cvt|ags|a/t)\b", t) and not re.search(r"\bmanual\b", t):
+        out["transmission"] = "automatic"
+    elif re.search(r"\bmanual\b", t) and not re.search(r"\bautomatic\b", t):
+        out["transmission"] = "manual"
+
     m = TIMELINE_PATTERN.search(t)
     if m:
         out["timeline"] = m.group(0)
