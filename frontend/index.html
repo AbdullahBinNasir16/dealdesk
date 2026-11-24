@@ -1,0 +1,260 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>DealDesk: Property & Cars, Booked in One Chat</title>
+  <meta name="description" content="DealDesk finds verified properties and cars that match your budget and books your site visit or test drive in minutes." />
+  <meta name="theme-color" content="#07070b" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter+Tight:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/styles.css" />
+  <script type="importmap">
+    { "imports": { "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+                   "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/" } }
+  </script>
+</head>
+<body class="site">
+  <div class="grain" aria-hidden="true"></div>
+  <div class="cursor-glow" id="cursorGlow" aria-hidden="true"></div>
+
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a class="logo" href="index.html"><span class="logo-mark"><i></i></span><span>DealDesk</span></a>
+      <nav class="nav">
+        <a href="#worlds" class="hide-sm">Explore</a>
+        <a href="#listings" class="hide-sm">Listings</a>
+        <a href="#how" class="hide-sm">How it works</a>
+        <a href="admin.html" class="hide-sm">For dealers</a>
+        <button class="btn btn-glass btn-sm" id="whoBtn">Sign in</button>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ============ HERO ============ -->
+  <section class="hero" id="top">
+    <canvas id="city" aria-hidden="true"></canvas>
+    <div class="hero-fade" aria-hidden="true"></div>
+    <div class="container hero-grid">
+      <div class="hero-copy">
+        <div class="eyebrow reveal"><span class="pulse-dot"></span> Live in Lahore · Islamabad · Karachi</div>
+        <h1 class="hero-title">
+          <span class="line"><span>Find it.</span></span>
+          <span class="line"><span><em class="shine">Feel</em> it.</span></span>
+          <span class="line"><span>Book it.</span></span>
+        </h1>
+        <p class="hero-sub reveal">One chat finds verified homes, plots and cars that fit your budget, then books the site visit or test drive with the dealer. It answers 24/7 and never makes up a price.</p>
+        <div class="hero-cta reveal">
+          <button class="chip" data-ask="Corolla under 60 lakh"><span>🚗</span> Corolla under 60 lakh</button>
+          <button class="chip" data-ask="Plot in Bahria Town under 1 crore"><span>🏡</span> Plot in Bahria Town under 1 crore</button>
+          <button class="chip" data-ask="DHA Phase 5 plot under 3 crore, buying in 2 months"><span>📍</span> DHA Phase 5 under 3 crore</button>
+          <button class="chip" data-ask="Automatic SUV in Karachi under 85 lakh"><span>🚙</span> SUV in Karachi under 85 lakh</button>
+        </div>
+        <div class="stats reveal">
+          <div><b id="statListings" data-count="44">0</b><span>verified listings</span></div>
+          <div><b data-count="4">0</b><span>partner dealers</span></div>
+          <div><b>24/7</b><span>instant replies</span></div>
+        </div>
+      </div>
+
+      <div class="hero-demo reveal" aria-hidden="true">
+        <div class="demo-card magnetic-soft">
+          <div class="demo-head"><span class="orb sm"></span><div><b>DealDesk</b><small>typing in real time</small></div><span class="live">LIVE</span></div>
+          <div class="demo-body" id="demoBody"></div>
+        </div>
+        <div class="float-tag t1"><span>⚙</span> search_listings</div>
+        <div class="float-tag t2"><span>✓</span> Visit confirmed · Sat 4 PM</div>
+        <div class="float-tag t3"><span>◎</span> 3 matches · under budget</div>
+      </div>
+    </div>
+    <a href="#worlds" class="scroll-cue" aria-label="Scroll down"><span></span></a>
+  </section>
+
+  <!-- ============ MARQUEE ============ -->
+  <section class="marquee-wrap" aria-label="Featured listings">
+    <div class="marquee" id="marqueeA"><div class="track"></div></div>
+    <div class="marquee reverse" id="marqueeB"><div class="track"></div></div>
+  </section>
+
+  <!-- ============ TWO WORLDS ============ -->
+  <section class="section" id="worlds">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="kicker">01 / Two worlds</span>
+        <h2>Bricks or <em>horsepower</em>?</h2>
+        <p class="sub">Pick a lane. The assistant handles both, and remembers which one you're into.</p>
+      </div>
+      <div class="worlds reveal">
+        <button class="world" data-world="property" style="--img:url('https://images.unsplash.com/photo-1568605114967-8130f3a36994?w=1400&q=75&auto=format')">
+          <div class="world-shade"></div>
+          <div class="world-copy">
+            <span class="world-n">P—</span>
+            <h3>Property</h3>
+            <p>Plots, houses, apartments and commercial in DHA, Bahria Town, Gulberg and beyond.</p>
+            <span class="world-go">Browse property <i>→</i></span>
+          </div>
+        </button>
+        <button class="world" data-world="car" style="--img:url('https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=1400&q=75&auto=format')">
+          <div class="world-shade"></div>
+          <div class="world-copy">
+            <span class="world-n">C—</span>
+            <h3>Cars</h3>
+            <p>Inspected sedans, SUVs, hatchbacks and pickups from trusted showrooms.</p>
+            <span class="world-go">Browse cars <i>→</i></span>
+          </div>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ LISTINGS ============ -->
+  <section class="section" id="listings">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="kicker">02 / Inventory</span>
+        <h2>Browse <em>listings</em></h2>
+        <p class="sub">Every listing has an ID (P-… property, C-… car). Ask the assistant about any of them.</p>
+      </div>
+      <div class="filters reveal">
+        <div class="tabs" id="catTabs">
+          <span class="tab-ink" aria-hidden="true"></span>
+          <button class="active" data-cat="">All</button>
+          <button data-cat="property">Property</button>
+          <button data-cat="car">Cars</button>
+        </div>
+        <select class="input" id="cityFilter">
+          <option value="">All cities</option><option>Lahore</option><option>Islamabad</option><option>Karachi</option>
+        </select>
+        <select class="input" id="budgetFilter">
+          <option value="">Any budget</option>
+          <option value="3000000">Up to 30 lakh</option><option value="6000000">Up to 60 lakh</option>
+          <option value="10000000">Up to 1 crore</option><option value="30000000">Up to 3 crore</option>
+        </select>
+        <div class="search">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+          <input class="input" id="searchBox" placeholder="Search e.g. Civic, DHA, apartment" />
+        </div>
+        <span class="result-count" id="resultCount"></span>
+      </div>
+      <div class="grid" id="grid">
+        <div class="card skeleton"></div><div class="card skeleton"></div><div class="card skeleton"></div><div class="card skeleton"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ HOW ============ -->
+  <section class="section" id="how">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="kicker">03 / The flow</span>
+        <h2>From "just looking" to <em>keys in hand</em></h2>
+        <p class="sub">Four steps. No forms, no call-backs, no follow-up chaos.</p>
+      </div>
+      <div class="bento">
+        <div class="tile t-a reveal">
+          <div class="tile-num">01</div>
+          <h3>Tell us what you want</h3>
+          <p>"Corolla under 60 lakh" or "plot in Bahria Town under 1 crore" is enough.</p>
+          <div class="viz viz-chat"><span class="b u">Corolla under 60 lakh, Lahore</span><span class="b a"><i></i><i></i><i></i></span></div>
+        </div>
+        <div class="tile t-b reveal">
+          <div class="tile-num">02</div>
+          <h3>See your 3 best matches</h3>
+          <p>Only real listings from verified dealers. No made-up prices.</p>
+          <div class="viz viz-cards"><span></span><span></span><span></span></div>
+        </div>
+        <div class="tile t-c reveal">
+          <div class="tile-num">03</div>
+          <h3>Confirm a time</h3>
+          <p>The assistant always asks before booking anything for you.</p>
+          <div class="viz viz-cal">
+            <div class="cal" id="calViz"></div>
+          </div>
+        </div>
+        <div class="tile t-d reveal">
+          <div class="tile-num">04</div>
+          <h3>We remember you</h3>
+          <p>Your budget and preferences are saved, so next time you pick up where you left off.</p>
+          <div class="viz viz-mem"><span>budget · 60 lakh</span><span>city · Lahore</span><span>make · Toyota</span><span>timeline · 1 month</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ GALLERY ============ -->
+  <section class="gallery" aria-label="Gallery">
+    <div class="gallery-track" id="galleryTrack">
+      <figure style="--img:url('https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=900&q=70&auto=format')"><figcaption>Villas</figcaption></figure>
+      <figure style="--img:url('https://images.unsplash.com/photo-1617531653332-bd46c24f2068?w=900&q=70&auto=format')"><figcaption>Performance</figcaption></figure>
+      <figure style="--img:url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=900&q=70&auto=format')"><figcaption>Modern homes</figcaption></figure>
+      <figure style="--img:url('https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?w=900&q=70&auto=format')"><figcaption>SUVs</figcaption></figure>
+      <figure style="--img:url('https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=900&q=70&auto=format')"><figcaption>Interiors</figcaption></figure>
+      <figure style="--img:url('https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?w=900&q=70&auto=format')"><figcaption>City cars</figcaption></figure>
+      <figure style="--img:url('https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=900&q=70&auto=format')"><figcaption>Apartments</figcaption></figure>
+      <figure style="--img:url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=900&q=70&auto=format')"><figcaption>Plots</figcaption></figure>
+    </div>
+  </section>
+
+  <!-- ============ DEALER ============ -->
+  <section class="section">
+    <div class="container">
+      <div class="dealer-band reveal" style="--img:url('https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?w=1800&q=70&auto=format')">
+        <div class="dealer-copy">
+          <span class="kicker">For agencies & showrooms</span>
+          <h2>Your sales desk that <em>never sleeps</em>.</h2>
+          <p>Get qualified leads, booked visits and automatic 1/3/7-day follow-ups. Monthly fee + Rs 1,000 per booked visit.</p>
+          <div class="dealer-feats"><span>Lead scoring</span><span>Approval queue</span><span>Kanban pipeline</span><span>CSV upload</span></div>
+        </div>
+        <a class="btn btn-primary btn-lg magnetic" href="admin.html">Open dealer dashboard <i>→</i></a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="wordmark" aria-hidden="true">DealDesk</div>
+      <div class="foot-row"><span>© DealDesk. AI sales assistant for real estate agencies and car dealers.</span><span>Listings shown are demo data. Photos are illustrative.</span></div>
+    </div>
+  </footer>
+
+  <!-- ============ CHAT ============ -->
+  <button class="chat-fab" id="chatFab"><span class="orb"></span><span>Ask DealDesk</span></button>
+  <div class="chat-panel" id="chatPanel" aria-live="polite">
+    <div class="chat-head">
+      <span class="orb sm"></span>
+      <div><div class="title">DealDesk Assistant</div><div class="who" id="chatWho"></div></div>
+      <div class="spacer"></div>
+      <button class="icon-btn" id="newChat" title="Start a new conversation">New chat</button>
+      <button class="icon-btn" id="closeChat" aria-label="Close">✕</button>
+    </div>
+    <div class="chat-body" id="chatBody"></div>
+    <div class="quick" id="quick">
+      <button data-ask="I want to buy a car">Buy a car</button>
+      <button data-ask="I'm looking for a property">Buy property</button>
+      <button data-ask="What visits do I have booked?">My visits</button>
+    </div>
+    <form class="chat-input" id="chatForm">
+      <input id="chatInput" placeholder="Type a message…" autocomplete="off" maxlength="1500" />
+      <button class="send" type="submit" aria-label="Send"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+    </form>
+  </div>
+
+  <div class="modal-bg" id="whoModal">
+    <div class="modal">
+      <h3>Who's chatting?</h3>
+      <p class="meta" style="margin:0">Your user ID keeps your conversations and saved preferences separate from everyone else's. Try two different IDs to see isolation in action.</p>
+      <label for="whoInput">Your name or email</label>
+      <input class="input" id="whoInput" placeholder="e.g. ali@example.com" />
+      <div style="display:flex;gap:8px;justify-content:flex-end;margin-top:16px">
+        <button class="btn btn-glass" id="whoCancel">Cancel</button>
+        <button class="btn btn-primary" id="whoSave">Continue</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="assets/config.js"></script>
+  <script src="assets/app.js"></script>
+  <script type="module" src="assets/city.js"></script>
+</body>
+</html>

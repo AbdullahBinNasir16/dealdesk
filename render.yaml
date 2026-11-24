@@ -1,0 +1,18 @@
+# Render Blueprint for the DealDesk agent API (Docker). ANTHROPIC_API_KEY and DATABASE_URL are entered in the Render dashboard.
+services:
+  - type: web
+    name: dealdesk-api
+    runtime: docker
+    rootDir: backend
+    plan: free
+    region: ohio          # same region as the Neon database (AWS us-east-2)
+    healthCheckPath: /health
+    envVars:
+      - key: ANTHROPIC_API_KEY
+        sync: false
+      - key: DATABASE_URL
+        sync: false
+      - key: ADMIN_SECRET
+        generateValue: true
+      - key: CORS_ORIGINS
+        value: "*"

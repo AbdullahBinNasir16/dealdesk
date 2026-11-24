@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>DealDesk Dealer Dashboard</title>
+  <meta name="theme-color" content="#07070b" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter+Tight:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body class="admin">
+  <div class="grain" aria-hidden="true"></div>
+
+  <div class="login-wrap" id="loginView">
+    <div class="login-art">
+      <div class="art-copy">
+        <span class="kicker">Dealer console</span>
+        <h2>Every lead,<br /><em>handled</em>.</h2>
+        <p>Your AI desk qualifies buyers, books visits and follows up for you. Your team just approves the slots.</p>
+      </div>
+    </div>
+    <div class="login-side">
+      <form class="login" id="loginForm">
+        <a class="logo" href="index.html" style="margin-bottom:18px"><span class="logo-mark"><i></i></span><span>DealDesk</span></a>
+        <h2 style="margin:6px 0 4px">Dealer login</h2>
+        <p class="meta" style="margin:0 0 18px">Each agency sees only its own leads, visits and chats.</p>
+        <input class="input" id="username" placeholder="Username" autocomplete="username" />
+        <input class="input" id="password" type="password" placeholder="Password" autocomplete="current-password" />
+        <div class="error" id="loginError"></div>
+        <button class="btn btn-primary" style="width:100%;padding:14px" type="submit">Log in <i>→</i></button>
+        <div class="hint"><b>Demo accounts</b> <span class="meta">· click to fill</span>
+          <div class="demo-acc" data-u="skyline" data-p="skyline123"><code>skyline / skyline123</code><span class="meta">Lahore property</span></div>
+          <div class="demo-acc" data-u="capital" data-p="capital123"><code>capital / capital123</code><span class="meta">Islamabad property</span></div>
+          <div class="demo-acc" data-u="prime" data-p="prime123"><code>prime / prime123</code><span class="meta">Lahore cars</span></div>
+          <div class="demo-acc" data-u="autohub" data-p="autohub123"><code>autohub / autohub123</code><span class="meta">Karachi cars</span></div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="admin-shell" id="appView" style="display:none">
+    <aside class="sidebar" id="sidebar">
+      <a class="logo" href="index.html"><span class="logo-mark"><i></i></span><span>DealDesk</span></a>
+      <button data-view="overview" class="active">Overview</button>
+      <button data-view="pipeline">Leads pipeline</button>
+      <button data-view="visits">Visits & approvals <span class="count" id="cntApprove" style="display:none"></span></button>
+      <button data-view="followups">Follow-ups <span class="count" id="cntFollow" style="display:none"></span></button>
+      <button data-view="chats">Chat history</button>
+      <button data-view="listings">Listings</button>
+      <div class="foot"><div id="agencyName"></div><a href="#" id="logout">Log out</a></div>
+    </aside>
+    <main class="main" id="main"></main>
+  </div>
+  <div class="toast" id="toast"></div>
+
+  <script src="assets/config.js"></script>
+  <script src="assets/admin.js"></script>
+</body>
+</html>
