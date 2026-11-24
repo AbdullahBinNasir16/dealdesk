@@ -10,7 +10,7 @@ DealDesk is a 24/7 AI sales assistant for Pakistani real-estate agencies and car
 ## 2. Links
 
 **Live website URL (customer page + dashboard):**
-Customer page: https://dealdesk-frontend.vercel.app · Dealer dashboard: https://dealdesk-frontend.vercel.app/admin (logins logins: `prime / prime123`, `skyline / skyline123`, `capital / capital123`, `autohub / autohub123`)
+Customer page: https://dealdesk-frontend.vercel.app · Dealer dashboard: https://dealdesk-frontend.vercel.app/admin (logins: `prime / prime123`, `skyline / skyline123`, `capital / capital123`, `autohub / autohub123`)
 
 **Agent API base URL:**
 https://dealdesk-api-hyz7.onrender.com
